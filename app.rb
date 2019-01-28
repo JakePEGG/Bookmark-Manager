@@ -7,8 +7,11 @@ class BookmarkManager < Sinatra::Base
 
   get ('/') do
     erb(:index)
-  end 
+  end
 
+  get('/bookmarks') do
+  end
+  
   run! if app_file == $0
 
 end
