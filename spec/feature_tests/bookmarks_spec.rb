@@ -11,8 +11,8 @@ end
     scenario 'expect a list of websites' do
       visit ('/bookmarks')
 
-      expect(page).to have_content "www.github.com"
-      expect(page).to have_content "www.codewars.com"
-      expect(page).to have_content "www.codeacademy.com"
+      expect(page).to have_content "http://www.makersacademy.com"
+      expect(page).to have_content "http://www.google.com"
+      expect(page).to have_content "http://www.destroyallsoftware.com"
     end
   end
