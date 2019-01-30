@@ -27,6 +27,7 @@ end
   feature 'adding bookmarks' do
     scenario 'a user press a button and submit string' do
     visit ('/')
+    any_website = double('http://www.bbc.com')
     fill_in 'Add', with: 'http://www.bbc.com'
     end
   end
