@@ -23,3 +23,10 @@ end
       expect(page).to have_content "http://www.destroyallsoftware.com"
     end
   end
+
+  feature 'adding bookmarks' do
+    scenario 'a user press a button and submit string' do
+    visit ('/')
+    fill_in 'Add', with: 'http://www.bbc.com'
+    end
+  end
