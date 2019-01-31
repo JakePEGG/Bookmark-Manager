@@ -1,33 +1,29 @@
 require_relative '/Users/jakeatkin/projects/databases/bookmark/app.rb'
 require 'pg'
 
-  feature 'bookmarks' do
-    scenario 'expect there to be a bookmark list'do
-    visit ('bookmarks')
-    expect(page).to have_content('Bookmarks')
-  end
-end
-
-  feature 'viewing a list of bookmarks' do
-    scenario 'expect a list of websites' do
+describe Bookmark do
+  describe '.all' do
+    it 'returns a list of bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
+      
       connection.exec("INSERT INTO bookmarks VALUES(1, 'http://www.makersacademy.com');")
-      connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.google.com');")
-      connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.destroyallsoftware.com');")
+      connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.destroyallsoftware.com');")
+      connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.google.com');")
 
-      visit('/bookmarks')
+      bookmarks = Bookmark.all
 
-      expect(page).to have_content "http://www.makersacademy.com"
-      expect(page).to have_content "http://www.google.com"
-      expect(page).to have_content "http://www.destroyallsoftware.com"
+      expect(bookmarks).to include('http://www.makersacademy.com')
+      expect(bookmarks).to include('http://www.destroyallsoftware.com')
+      expect(bookmarks).to include('http://www.google.com')
     end
   end
 
-  feature 'adding bookmarks' do
-    scenario 'a user press a button and submit string' do
-    visit ('/')
-    any_website = double('http://www.bbc.com')
-    fill_in 'Add', with: 'http://www.bbc.com'
+  describe '.create' do
+    it 'creates a new bookmark' do
+      Bookmark.create(url: 'http://www.testbookmark.com')
+
+      expect(Bookmark.all).to include 'http://www.testbookmark.com'
     end
   end
+end
