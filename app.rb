@@ -17,12 +17,15 @@ end
 
 get '/bookmarks/new' do
   erb :new
+  
 end
 
+
 post '/bookmarks' do
-  Bookmark.create(url: params[:url])
+  time = Time.now
+  Bookmark.create(url: params[:url], title: params[:title])
   redirect '/bookmarks'
 end
 
 run! if app_file == $0
-end 
+end
