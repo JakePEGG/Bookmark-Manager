@@ -14,9 +14,9 @@ feature 'Viewing bookmarks' do
 
   feature 'viewing bookmarks' do
     scenario 'bookmarks are visible' do
-      BookmarkManager.create(url: "http://www.makersacademy.com", title: "Makers Academy")
-      BookmarkManager.create(url: "http://www.destroyallsoftware.com", title: "Destroy All Software")
-      BookmarkManager.create(url: "http://www.google.com", title: "Google")
+      BookmarkManagers.create(url: "http://www.makersacademy.com", title: "Makers Academy")
+      BookmarkManagers.create(url: "http://www.destroyallsoftware.com", title: "Destroy All Software")
+      BookmarkManagers.create(url: "http://www.google.com", title: "Google")
 
       visit '/bookmarks'
 

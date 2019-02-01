@@ -1,7 +1,8 @@
 require 'sinatra/base'
 require './lib/bookmark'
+require '/Users/jakeatkin/projects/databases/bookmark/lib/bookmark_manager.rb'
 
-class BookmarkManager < Sinatra::Base
+class App < Sinatra::Base
 
   enable :sessions
   set :session_secret, 'super secret'
@@ -11,7 +12,7 @@ class BookmarkManager < Sinatra::Base
   end
 
 get '/bookmarks' do
-  @bookmarks = BookmarkManager.all
+  @bookmarks = BookmarkManagers.all
   erb :bookmarks
 end
 
@@ -23,7 +24,7 @@ end
 
 post '/bookmarks' do
   time = Time.now
-  BookmarkManager.create(url: params[:url], title: params[:title])
+  BookmarkManagers.create(url: params[:url], title: params[:title])
   redirect '/bookmarks'
 end
 

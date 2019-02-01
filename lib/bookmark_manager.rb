@@ -1,7 +1,8 @@
 require 'pg'
 require '/Users/jakeatkin/projects/databases/bookmark/app.rb'
+require '/Users/jakeatkin/projects/databases/bookmark/lib/bookmark.rb'
 
-class BookmarkManager
+class BookmarkManagers
   def self.all
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test')

@@ -26,7 +26,7 @@ require 'capybara/rspec'
 require 'rspec'
 
 # Tell Capybara to talk to BookmarkManager
-Capybara.app = BookmarkManager
+Capybara.app = App
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.before(:each) do

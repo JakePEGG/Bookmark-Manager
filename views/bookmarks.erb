@@ -2,6 +2,7 @@
   <% @bookmarks.each do |bookmark| %>
     <li>
       <a href="<%= bookmark.url %>">
+        <% p bookmark %>
         <%= bookmark.title %>
       </a>
       <form action="/delete/<% bookmark.url%>/<% bookmark.title %>" method="post">

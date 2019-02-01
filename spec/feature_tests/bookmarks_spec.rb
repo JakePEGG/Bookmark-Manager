@@ -3,17 +3,17 @@ require 'pg'
 require '/Users/jakeatkin/projects/databases/bookmark/spec/unit_tests/database_helpers.rb'
 
 
-describe BookmarkManager do
+describe BookmarkManagers do
   describe '.all' do
     it 'returns a list of bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
       # Add the test data
-      bookmark = BookmarkManager.create(url: "http://www.makersacademy.com", title: "Makers Academy")
-      BookmarkManager.create(url: "http://www.destroyallsoftware.com", title: "Destroy All Software")
-      BookmarkManager.create(url: "http://www.google.com", title: "Google")
+      bookmark = BookmarkManagers.create(url: "http://www.makersacademy.com", title: "Makers Academy")
+      BookmarkManagers.create(url: "http://www.destroyallsoftware.com", title: "Destroy All Software")
+      BookmarkManagers.create(url: "http://www.google.com", title: "Google")
 
-      bookmarks = BookmarkManager.all
+      bookmarks = BookmarkManagers.all
 
       expect(bookmarks.length).to eq 3
       expect(bookmarks.first).to be_a Bookmark
@@ -25,7 +25,7 @@ describe BookmarkManager do
 
   describe '.create' do
     it 'creates a new bookmark' do
-      bookmark = BookmarkManager.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+      bookmark = BookmarkManagers.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
       persisted_data = persisted_data(id: bookmark.id)
 
       expect(bookmark).to be_a Bookmark
