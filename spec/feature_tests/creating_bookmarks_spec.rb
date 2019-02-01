@@ -1,5 +1,6 @@
 require_relative '/Users/jakeatkin/projects/databases/bookmark/app.rb'
 require 'pg'
+require '/Users/jakeatkin/projects/databases/bookmark/lib/bookmark_manager.rb'
 
 feature 'Adding a new bookmark' do
   scenario 'A user can add a bookmark to Bookmark Manager' do
